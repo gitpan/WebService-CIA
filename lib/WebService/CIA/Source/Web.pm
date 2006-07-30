@@ -4,6 +4,7 @@ require 5.005_62;
 use strict;
 use warnings;
 use LWP::UserAgent;
+use Crypt::SSLeay;
 use WebService::CIA::Parser;
 use WebService::CIA::Source;
 
@@ -22,6 +23,7 @@ sub new {
     $self->{CACHE} = {};
     $self->{PARSER} = WebService::CIA::Parser->new;
     $self->{UA} = LWP::UserAgent->new;
+	$self->{UA}->env_proxy(); # check for proxies
     bless ($self, $class);
     return $self;
 
@@ -65,7 +67,7 @@ sub get {
 
     my $self = shift;
     my $cc = shift;
-    my $response = $self->ua->get("http://www.cia.gov/cia/publications/factbook/print/$cc.html");
+    my $response = $self->ua->get("https://www.cia.gov/cia/publications/factbook/print/$cc.html");
     if ($response->is_success) {
         my $data = $self->parser->parse($cc, $response->content);
         $self->cache($data);
@@ -152,11 +154,11 @@ This method creates a new WebService::CIA::Source::Web object. It takes no argum
 Retrieve a value from the web.
 
 C<$country_code> should be the FIPS 10-4 country code as defined in
-L<http://www.cia.gov/cia/publications/factbook/appendix/appendix-d.html>.
+L<https://www.cia.gov/cia/publications/factbook/appendix/appendix-d.html>.
 
 C<$field> should be the name of the field whose value you want to
 retrieve, as defined in
-L<http://www.cia.gov/cia/publications/factbook/docs/notesanddefs.html>.
+L<https://www.cia.gov/cia/publications/factbook/docs/notesanddefs.html>.
 (WebService::CIA::Parser also creates four extra fields: "URL", "URL - Print",
 "URL - Flag", and "URL - Map" which are the URLs of the country's Factbook
 page, the printable version of that page, a GIF map of the country, and a
@@ -205,7 +207,7 @@ This library is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
 
 The CIA World Factbook's copyright information page
-(L<http://www.cia.gov/cia/publications/factbook/docs/contributor_copyright.html>)
+(L<https://www.cia.gov/cia/publications/factbook/docs/contributor_copyright.html>)
 states:
 
   The Factbook is in the public domain. Accordingly, it may be copied

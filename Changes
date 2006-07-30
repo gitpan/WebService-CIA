@@ -1,1 +1,4 @@
+0.02 2006-01-16
 
+	- Added call to env_proxy for web access. [rt.cpan.org #17083, thanks to Gary Ashton-Jones]
+    - Changed web source to use HTTPS URLs. [rt.cpan.org #20762, thanks to Graham Stead]

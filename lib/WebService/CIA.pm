@@ -5,7 +5,7 @@ use strict;
 use warnings;
 use Carp;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 sub new {
 
@@ -102,6 +102,16 @@ WebService::CIA - information from the CIA World Factbook.
 =head1 DESCRIPTION
 
 A module which gets information from the CIA World Factbook.
+
+
+=head1 Crypt::SSLeay
+
+The most recent version of the CIA World Factbook uses HTTPS to access its
+web pages. As such, WebService::CIA requires Crypt::SSLeay which suffers from
+the usual cryptographic export restriction mumbo jumbo. Sorry about that.
+
+Users of ActiveState's ActivePerl should see L<http://aspn.activestate.com/ASPN/Downloads/ActivePerl/PPM/Repository>
+for instructions on downloading a PPM of Crypt::SSLeay.
 
 
 =head1 METHODS

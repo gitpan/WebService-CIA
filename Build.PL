@@ -10,6 +10,7 @@ my $build = Module::Build->new(
         'Storable'       => '2.0',
         'DB_File'        => '1.8',
         'LWP::UserAgent' => '2.0',
+        'Crypt::SSLeay'  => '0',
     },
     create_makefile_pl => 'passthrough',
 );

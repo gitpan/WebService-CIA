@@ -1,30 +1,8 @@
 --- #YAML:1.0
-name: WWW-CIA
-version: 0.01
+name: WebService-CIA
+version: 0.02
+author:
+  - Ian Malpass (ian@indecorous.com)
+abstract: information from the CIA World Factbook.
 license: perl
-distribution_type: module
-requires:
-  DB_File: 1.8
-  LWP::UserAgent: 2.0
-  MLDBM: 2.01
-  Storable: 2.0
-recommends: {}
-build_requires: {}
-conflicts: {}
-provides:
-  WebService::CIA:
-    file: lib/WebService/CIA.pm
-    version: 0.01
-  WebService::CIA::Parser:
-    file: lib/WebService/CIA/Parser.pm
-    version: 0.01
-  WebService::CIA::Source:
-    file: lib/WebService/CIA/Source.pm
-    version: 0.01
-  WebService::CIA::Source::DBM:
-    file: lib/WebService/CIA/Source/DBM.pm
-    version: 0.01
-  WebService::CIA::Source::Web:
-    file: lib/WebService/CIA/Source/Web.pm
-    version: 0.01
-generated_by: Module::Build version 0.21
+generated_by: Module::Build version 0.2607, without YAML.pm
