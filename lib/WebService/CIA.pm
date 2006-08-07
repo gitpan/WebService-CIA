@@ -5,7 +5,7 @@ use strict;
 use warnings;
 use Carp;
 
-our $VERSION = '0.02';
+our $VERSION = '1.0';
 
 sub new {
 
@@ -173,6 +173,10 @@ It takes one argument, an arrayref of country codes.
 
 It returns a hashref similar to the one from C<get_hashref> above,
 containing all the fields available for each country.
+
+=item C<source()>
+
+Get a reference to the WebService::CIA::Source object in use.
 
 =back
 

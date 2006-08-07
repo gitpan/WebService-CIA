@@ -9,7 +9,7 @@ use WebService::CIA::Source;
 
 @WebService::CIA::Source::DBM::ISA = ("WebService::CIA::Source");
 
-our $VERSION = '0.01';
+our $VERSION = '1.0';
 
 sub new {
 
@@ -151,6 +151,10 @@ C<$country_code> should be as described above.
 C<$data> is a hashref of the data to store (as Field =E<gt> Value).
 
 C<set> B<overwrites> any data already in the DBM under C<$country_code>.
+
+=item C<dbm()>
+
+Returns a reference to the DBM file in use.
 
 =back
 

@@ -7,9 +7,11 @@ lib/WebService/CIA/Source/DBM.pm
 lib/WebService/CIA/Source/Web.pm
 MANIFEST
 META.yml
+README
 t/www-cia-parser.t
 t/www-cia-source-dbm.t
 t/www-cia-source-web.t
 t/www-cia-source.t
 t/www-cia.t
 webservice-cia-makedbm.pl
+Makefile.PL

@@ -4,7 +4,7 @@ require 5.005_62;
 use strict;
 use warnings;
 
-our $VERSION = '0.01';
+our $VERSION = '1.0';
 
 sub new {
 

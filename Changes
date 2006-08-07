@@ -1,4 +1,11 @@
-0.02 2006-01-16
+0.02 2006-07-30
 
 	- Added call to env_proxy for web access. [rt.cpan.org #17083, thanks to Gary Ashton-Jones]
     - Changed web source to use HTTPS URLs. [rt.cpan.org #20762, thanks to Graham Stead]
+
+1.0 2006-08-07
+
+    - Added README.
+    - Added POD and POD coverage tests.
+    - Fixed 0.02 release date in Changes.
+    - Bumped version to 1.0, because 0.0x just gets silly after a while.

@@ -10,7 +10,7 @@ use WebService::CIA::Source;
 
 @WebService::CIA::Source::Web::ISA = ("WebService::CIA::Source");
 
-our $VERSION = '0.01';
+our $VERSION = '1.0';
 
 # Preloaded methods go here.
 
@@ -172,6 +172,28 @@ best way around it right now.
 
 Returns a hashref of field-value pairs for C<$country_code> or an empty
 hashref if C<$country_code> isn't available from the Factbook.
+
+=item C<get($country_code)>
+
+Retrieve and cache the data for a country.
+
+Returns 1 if successful, 0 if not.
+
+=item C<cached($country_code)>
+
+Get/set the country code whose data is cached.
+
+=item C<cache($hashref)>
+
+Get/set a hashref of data for the current country.
+
+=item C<parser()>
+
+Returns a reference to the WebService::CIA::Parser object being used.
+
+=item C<ua()>
+
+Returns a reference to the LWP::UserAgent being used.
 
 =back
 

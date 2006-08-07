@@ -1,8 +1,8 @@
 --- #YAML:1.0
 name: WebService-CIA
-version: 0.02
+version: 1.0
 author:
   - Ian Malpass (ian@indecorous.com)
 abstract: information from the CIA World Factbook.
 license: perl
-generated_by: Module::Build version 0.2607, without YAML.pm
+generated_by: Module::Build version 0.2609, without YAML.pm
