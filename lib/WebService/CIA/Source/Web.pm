@@ -10,7 +10,7 @@ use WebService::CIA::Source;
 
 @WebService::CIA::Source::Web::ISA = ("WebService::CIA::Source");
 
-our $VERSION = '1.0';
+our $VERSION = '1.1';
 
 # Preloaded methods go here.
 
@@ -23,7 +23,7 @@ sub new {
     $self->{CACHE} = {};
     $self->{PARSER} = WebService::CIA::Parser->new;
     $self->{UA} = LWP::UserAgent->new;
-	$self->{UA}->env_proxy(); # check for proxies
+    $self->{UA}->env_proxy(); # check for proxies
     bless ($self, $class);
     return $self;
 

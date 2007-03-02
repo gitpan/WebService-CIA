@@ -26,4 +26,4 @@ ok( exists $data->{Test} &&
 
 #5
 ok( exists $data->{URL} &&
-    $data->{URL} eq 'http://www.cia.gov/cia/publications/factbook/geos/zz.html', 'parse() - sets URL data correctly' );
+    $data->{URL} eq 'https://www.cia.gov/cia/publications/factbook/geos/zz.html', 'parse() - sets URL data correctly' );

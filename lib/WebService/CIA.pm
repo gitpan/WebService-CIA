@@ -5,7 +5,7 @@ use strict;
 use warnings;
 use Carp;
 
-our $VERSION = '1.0';
+our $VERSION = '1.1';
 
 sub new {
 
@@ -129,9 +129,9 @@ key whose value is a WebService::CIA::Storage object.
 This method retrieves information from the store.
 
 It takes two arguments: a country code (as defined in FIPS 10-4 on
-L<http://www.cia.gov/cia/publications/factbook/appendix/appendix-d.html>,
+L<https://www.cia.gov/cia/publications/factbook/appendix/appendix-d.html>,
 e.g. "uk", "us") and a field name (as defined in
-L<http://www.cia.gov/cia/publications/factbook/docs/notesanddefs.html>,
+L<https://www.cia.gov/cia/publications/factbook/docs/notesanddefs.html>,
 e.g. "Population", "Agriculture - products"). (WebService::CIA::Parser also
 creates four extra fields: "URL", "URL - Print", "URL - Flag", and "URL -
 Map" which are the URLs of the country's Factbook page, the printable
@@ -194,7 +194,7 @@ This library is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
 
 The CIA World Factbook's copyright information page
-(L<http://www.cia.gov/cia/publications/factbook/docs/contributor_copyright.html>)
+(L<https://www.cia.gov/cia/publications/factbook/docs/contributor_copyright.html>)
 states:
 
   The Factbook is in the public domain. Accordingly, it may be copied

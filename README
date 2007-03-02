@@ -39,3 +39,4 @@ This module uses Module::Build. The installation process is therefore
     ./Build
     ./Build test
     ./Build install
+

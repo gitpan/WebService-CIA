@@ -4,7 +4,7 @@ require 5.005_62;
 use strict;
 use warnings;
 
-our $VERSION = '1.0';
+our $VERSION = '1.1';
 
 sub new {
 
@@ -23,10 +23,10 @@ sub parse {
     my ($self, $cc, $html) = @_;
 
     my $data = {
-        'URL - Flag'  => 'http://www.cia.gov/cia/publications/factbook/flags/' . $cc . '-flag.gif',
-        'URL - Map'   => 'http://www.cia.gov/cia/publications/factbook/maps/'  . $cc . '-map.gif',
-        'URL'         => 'http://www.cia.gov/cia/publications/factbook/geos/'  . $cc . '.html',
-        'URL - Print' => 'http://www.cia.gov/cia/publications/factbook/geos/'  . $cc . '.html'
+        'URL - Flag'  => 'https://www.cia.gov/cia/publications/factbook/flags/' . $cc . '-flag.gif',
+        'URL - Map'   => 'https://www.cia.gov/cia/publications/factbook/maps/'  . $cc . '-map.gif',
+        'URL'         => 'https://www.cia.gov/cia/publications/factbook/geos/'  . $cc . '.html',
+        'URL - Print' => 'https://www.cia.gov/cia/publications/factbook/geos/'  . $cc . '.html'
     };
     while ($html =~ m#
         <td[^>]+ class="FieldLabel">.*?
@@ -75,7 +75,7 @@ WebService::CIA::Parser - Parse pages from the CIA World Factbook
 
 WebService::CIA::Parser takes a string of HTML and parses it. It will only give
 sensible output if the string is the HTML for a page whose URL matches
-C<http://www.cia.gov/cia/publications/factbook/print/[a-z]{2}\.html>
+C<https://www.cia.gov/cia/publications/factbook/print/[a-z]{2}\.html>
 
 This parsing is somewhat fragile, since it assumes a certain page structure.
 It'll work just as long as the CIA don't choose to alter their pages.
@@ -112,7 +112,7 @@ of the country respectively.
   use LWP::Simple qw(get);
 
   $html = get(
-    "http://www.cia.gov/cia/publications/factbook/print/uk.html"
+    "https://www.cia.gov/cia/publications/factbook/print/uk.html"
   );
   $parser = WebService::CIA::Parser->new;
   $data = $parser->parse($html);
@@ -132,7 +132,7 @@ This library is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
 
 The CIA World Factbook's copyright information page
-(L<http://www.cia.gov/cia/publications/factbook/docs/contributor_copyright.html>)
+(L<https://www.cia.gov/cia/publications/factbook/docs/contributor_copyright.html>)
 states:
 
   The Factbook is in the public domain. Accordingly, it may be copied

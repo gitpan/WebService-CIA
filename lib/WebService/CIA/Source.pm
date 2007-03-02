@@ -4,7 +4,7 @@ require 5.005_62;
 use strict;
 use warnings;
 
-our $VERSION = '1.0';
+our $VERSION = '1.1';
 
 
 # Preloaded methods go here.
@@ -103,7 +103,7 @@ This library is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
 
 The CIA World Factbook's copyright information page
-(L<http://www.cia.gov/cia/publications/factbook/docs/contributor_copyright.html>)
+(L<https://www.cia.gov/cia/publications/factbook/docs/contributor_copyright.html>)
 states:
 
   The Factbook is in the public domain. Accordingly, it may be copied
