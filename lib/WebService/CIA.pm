@@ -5,7 +5,9 @@ use strict;
 use warnings;
 use Carp;
 
-our $VERSION = '1.1';
+our $VERSION = '1.2';
+
+$WebService::CIA::base_url = "https://www.cia.gov/library/publications/the-world-factbook/";
 
 sub new {
 
@@ -75,7 +77,7 @@ __END__
 
 =head1 NAME
 
-WebService::CIA - information from the CIA World Factbook.
+WebService::CIA - Get information from the CIA World Factbook.
 
 
 =head1 SYNOPSIS
@@ -129,9 +131,9 @@ key whose value is a WebService::CIA::Storage object.
 This method retrieves information from the store.
 
 It takes two arguments: a country code (as defined in FIPS 10-4 on
-L<https://www.cia.gov/cia/publications/factbook/appendix/appendix-d.html>,
+L<https://www.cia.gov/library/publications/the-world-factbook/appendix/appendix-d.html>,
 e.g. "uk", "us") and a field name (as defined in
-L<https://www.cia.gov/cia/publications/factbook/docs/notesanddefs.html>,
+L<https://www.cia.gov/library/publications/the-world-factbook/docs/notesanddefs.html>,
 e.g. "Population", "Agriculture - products"). (WebService::CIA::Parser also
 creates four extra fields: "URL", "URL - Print", "URL - Flag", and "URL -
 Map" which are the URLs of the country's Factbook page, the printable
@@ -181,20 +183,34 @@ Get a reference to the WebService::CIA::Source object in use.
 =back
 
 
+=head1 CONFIGURATION VARIABLES
+
+=over 4
+
+=item C<$WebService::CIA::base_url>
+
+Sets the base URL for the Factbook (currently 
+"https://www.cia.gov/library/publications/the-world-factbook/"). If the
+Factbook changes location, this can be changed to point to the new location
+(assuming the relative structure of the Factbook is unchanged).
+
+=back
+
+
 =head1 AUTHOR
 
-Ian Malpass (ian@indecorous.com)
+Ian Malpass (ian-cpan@indecorous.com)
 
 
 =head1 COPYRIGHT
 
-Copyright 2003, Ian Malpass
+Copyright 2003-2007, Ian Malpass
 
 This library is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
 
 The CIA World Factbook's copyright information page
-(L<https://www.cia.gov/cia/publications/factbook/docs/contributor_copyright.html>)
+(L<https://www.cia.gov/library/publications/the-world-factbook/docs/contributor_copyright.html>)
 states:
 
   The Factbook is in the public domain. Accordingly, it may be copied

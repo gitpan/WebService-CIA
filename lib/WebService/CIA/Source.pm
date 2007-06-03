@@ -4,7 +4,7 @@ require 5.005_62;
 use strict;
 use warnings;
 
-our $VERSION = '1.1';
+our $VERSION = '1.2';
 
 
 # Preloaded methods go here.
@@ -52,7 +52,7 @@ __END__
 
 =head1 NAME
 
-WebService::CIA::Source - a base class for WebService::CIA sources
+WebService::CIA::Source - A base class for WebService::CIA sources
 
 
 =head1 SYNOPSIS
@@ -92,18 +92,18 @@ Retrieve all fields and values. Always returns an empty hashref.
 
 =head1 AUTHOR
 
-Ian Malpass (ian@indecorous.com)
+Ian Malpass (ian-cpan@indecorous.com)
 
 
 =head1 COPYRIGHT
 
-Copyright 2003, Ian Malpass
+Copyright 2003-2007, Ian Malpass
 
 This library is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
 
 The CIA World Factbook's copyright information page
-(L<https://www.cia.gov/cia/publications/factbook/docs/contributor_copyright.html>)
+(L<https://www.cia.gov/library/publications/the-world-factbook/docs/contributor_copyright.html>)
 states:
 
   The Factbook is in the public domain. Accordingly, it may be copied

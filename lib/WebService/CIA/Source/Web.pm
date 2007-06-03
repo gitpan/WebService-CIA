@@ -5,12 +5,13 @@ use strict;
 use warnings;
 use LWP::UserAgent;
 use Crypt::SSLeay;
+use WebService::CIA;
 use WebService::CIA::Parser;
 use WebService::CIA::Source;
 
 @WebService::CIA::Source::Web::ISA = ("WebService::CIA::Source");
 
-our $VERSION = '1.1';
+our $VERSION = '1.2';
 
 # Preloaded methods go here.
 
@@ -67,7 +68,7 @@ sub get {
 
     my $self = shift;
     my $cc = shift;
-    my $response = $self->ua->get("https://www.cia.gov/cia/publications/factbook/print/$cc.html");
+    my $response = $self->ua->get($WebService::CIA::base_url . "print/$cc.html");
     if ($response->is_success) {
         my $data = $self->parser->parse($cc, $response->content);
         $self->cache($data);
@@ -121,7 +122,7 @@ __END__
 
 =head1 NAME
 
-WebService::CIA::Source::Web - an interface to the online CIA World Factbook
+WebService::CIA::Source::Web - An interface to the online CIA World Factbook
 
 
 =head1 SYNOPSIS
@@ -154,11 +155,11 @@ This method creates a new WebService::CIA::Source::Web object. It takes no argum
 Retrieve a value from the web.
 
 C<$country_code> should be the FIPS 10-4 country code as defined in
-L<https://www.cia.gov/cia/publications/factbook/appendix/appendix-d.html>.
+L<https://www.cia.gov/library/publications/the-world-factbook/appendix/appendix-d.html>.
 
 C<$field> should be the name of the field whose value you want to
 retrieve, as defined in
-L<https://www.cia.gov/cia/publications/factbook/docs/notesanddefs.html>.
+L<https://www.cia.gov/library/publications/the-world-factbook/docs/notesanddefs.html>.
 (WebService::CIA::Parser also creates four extra fields: "URL", "URL - Print",
 "URL - Flag", and "URL - Map" which are the URLs of the country's Factbook
 page, the printable version of that page, a GIF map of the country, and a
@@ -218,18 +219,18 @@ keeps a copy of the data for the last country downloaded in memory.
 
 =head1 AUTHOR
 
-Ian Malpass (ian@indecorous.com)
+Ian Malpass (ian-cpan@indecorous.com)
 
 
 =head1 COPYRIGHT
 
-Copyright 2003, Ian Malpass
+Copyright 2003-2007, Ian Malpass
 
 This library is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
 
 The CIA World Factbook's copyright information page
-(L<https://www.cia.gov/cia/publications/factbook/docs/contributor_copyright.html>)
+(L<https://www.cia.gov/library/publications/the-world-factbook/docs/contributor_copyright.html>)
 states:
 
   The Factbook is in the public domain. Accordingly, it may be copied

@@ -8,14 +8,14 @@ lib/WebService/CIA/Source.pm
 lib/WebService/CIA/Source/DBM.pm
 lib/WebService/CIA/Source/Web.pm
 Makefile.PL
-MANIFEST
+MANIFEST			This list of files
 META.yml
 README
-t/www-cia-parser.t
-t/www-cia-pod-coverage.t
-t/www-cia-pod.t
-t/www-cia-source-dbm.t
-t/www-cia-source-web.t
-t/www-cia-source.t
-t/www-cia.t
+t/pod-coverage.t
+t/pod.t
+t/webservice-cia-parser.t
+t/webservice-cia-source-dbm.t
+t/webservice-cia-source-web.t
+t/webservice-cia-source.t
+t/webservice-cia.t
 webservice-cia-makedbm.pl

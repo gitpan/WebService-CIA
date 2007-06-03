@@ -15,3 +15,11 @@
     - Fixed some HTTP URLs I'd missed (mostly in POD). [Thanks to Robert Henniger]
     - Fixed distribution tar file.
     - Added some examples, shipped POD tests, and other Kwalitee-improving changes.
+
+1.2 2007-06-03
+
+    - Fixed URLs (Factbook had moved).
+    - Added $WebService::CIA::base_url and changed modules to use it.
+    - Added tests for generated URLs (flag URL, etc.)
+    - Renamed some tests.
+    - Fixed typo, email address, and copyright.

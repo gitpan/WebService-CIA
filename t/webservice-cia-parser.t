@@ -1,5 +1,6 @@
 use strict;
-use Test::More tests => 5;
+use Test::More tests => 9;
+use Module::Build;
 
 #1
 BEGIN {	use_ok('WebService::CIA::Parser'); }
@@ -26,4 +27,22 @@ ok( exists $data->{Test} &&
 
 #5
 ok( exists $data->{URL} &&
-    $data->{URL} eq 'https://www.cia.gov/cia/publications/factbook/geos/zz.html', 'parse() - sets URL data correctly' );
+    $data->{URL} eq $WebService::CIA::base_url . 'geos/zz.html', 'parse() - sets URL data correctly' );
+
+SKIP: {
+
+    my $build = Module::Build->current();
+    skip "Skipping internet-based tests", 4 if $build->notes('internet') eq 'no';
+
+    require LWP::UserAgent;
+    require Crypt::SSLeay;
+
+    my $ua = LWP::UserAgent->new();
+    my $data = $parser->parse( 'uk', '' );
+
+    for ( "URL - Flag", "URL - Map", "URL", "URL - Print" ) {
+        my $resp = $ua->get( $data->{ $_ } );
+        is( $resp->code, 200, "URL OK" );
+    }
+
+}
