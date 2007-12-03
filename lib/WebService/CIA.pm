@@ -5,7 +5,7 @@ use strict;
 use warnings;
 use Carp;
 
-our $VERSION = '1.2';
+our $VERSION = '1.3';
 
 $WebService::CIA::base_url = "https://www.cia.gov/library/publications/the-world-factbook/";
 
@@ -39,9 +39,8 @@ sub get_all_hashref {
 
     my $self = shift;
     my $country = shift;
-    my $cc;
     my $data = {};
-    foreach $cc (@$country) {
+    foreach my $cc (@$country) {
         $data->{$cc} = $self->source->all($cc);
     }
     return $data;
@@ -52,11 +51,10 @@ sub get_hashref {
 
     my $self = shift;
     my ($country, $field) = @_;
-    my ($cc, $f);
     my $data = {};
-    foreach $cc (@$country) {
+    foreach my $cc (@$country) {
          $data->{$cc} = {};
-         foreach $f (@$field) {
+         foreach my $f (@$field) {
              $data->{$cc}->{$f} = $self->source->value($cc, $f);
          }
     }

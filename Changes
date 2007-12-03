@@ -23,3 +23,9 @@
     - Added tests for generated URLs (flag URL, etc.)
     - Renamed some tests.
     - Fixed typo, email address, and copyright.
+
+1.3 2007-12-03
+
+    - Minor tweaks from Perl::Critic
+    - Added "use warnings" to WebService::CIA::Source::DBM
+    - Fixed error in documentation for WebService::CIA::Source::DBM

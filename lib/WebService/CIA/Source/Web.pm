@@ -11,7 +11,7 @@ use WebService::CIA::Source;
 
 @WebService::CIA::Source::Web::ISA = ("WebService::CIA::Source");
 
-our $VERSION = '1.2';
+our $VERSION = '1.3';
 
 # Preloaded methods go here.
 
@@ -37,14 +37,14 @@ sub value {
 
     unless ($self->cached eq $cc) {
         unless ($self->get($cc)) {
-            return undef;
+            return;
         }
     }
 
     if (exists $self->cache->{$f}) {
         return $self->cache->{$f};
     } else {
-        return undef;
+        return;
     }
 
 }

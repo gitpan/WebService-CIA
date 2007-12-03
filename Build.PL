@@ -12,6 +12,10 @@ my $build = Module::Build->new(
         'LWP::UserAgent' => '2.0',
         'Crypt::SSLeay'  => '0',
     },
+    build_requires => {
+        'Test::More'    => '0',
+        'Module::Build' => '0',
+    },
     create_makefile_pl => 'passthrough',
 );
 

@@ -4,7 +4,7 @@ require 5.005_62;
 use strict;
 use warnings;
 
-our $VERSION = '1.2';
+our $VERSION = '1.3';
 
 
 # Preloaded methods go here.
@@ -28,7 +28,7 @@ sub value {
     if ($cc eq 'testcountry' and $f eq 'Test') {
         return 'Wombat';
     } else {
-        return undef;
+        return;
     }
 
 }

@@ -5,7 +5,7 @@ use strict;
 use warnings;
 use WebService::CIA;
 
-our $VERSION = '1.2';
+our $VERSION = '1.3';
 
 sub new {
 

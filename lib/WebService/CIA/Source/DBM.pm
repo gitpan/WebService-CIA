@@ -2,6 +2,7 @@ package WebService::CIA::Source::DBM;
 
 require 5.005_62;
 use strict;
+use warnings;
 use Fcntl;
 use MLDBM qw(DB_File Storable);
 use Carp;
@@ -9,7 +10,7 @@ use WebService::CIA::Source;
 
 @WebService::CIA::Source::DBM::ISA = ("WebService::CIA::Source");
 
-our $VERSION = '1.2';
+our $VERSION = '1.3';
 
 sub new {
 
@@ -24,9 +25,9 @@ sub new {
 
     my $mode;
     if (exists $opts->{Mode} && $opts->{Mode} eq "readwrite") {
-        tie %{$self->{DBM}}, "MLDBM", $opts->{DBM}, O_CREAT|O_RDWR, 0640 or croak "WebService::CIA::Source::DBM: Can't open DBM: $!";
+        tie %{$self->{DBM}}, "MLDBM", $opts->{DBM}, O_CREAT|O_RDWR, 0640 or croak "WebService::CIA::Source::DBM: Can't open DBM: $!"; ## no critic (ProhibitLeadingZeros)
     } elsif (-e $opts->{DBM}) {
-        tie %{$self->{DBM}}, "MLDBM", $opts->{DBM}, O_RDONLY, 0440 or croak "WebService::CIA::Source::DBM: Can't open DBM: $!";
+        tie %{$self->{DBM}}, "MLDBM", $opts->{DBM}, O_RDONLY, 0440 or croak "WebService::CIA::Source::DBM: Can't open DBM: $!"; ## no critic (ProhibitLeadingZeros)
     } else {
         croak "WebService::CIA::Source::DBM: $opts->{DBM}: $!";
     }
@@ -43,7 +44,7 @@ sub value {
     if (exists $self->dbm->{$country} and exists $self->dbm->{$country}->{$field}) {
         return $self->dbm->{$country}->{$field};
     } else {
-        return undef;
+        return;
     }
 
 }
@@ -90,8 +91,8 @@ WebService::CIA::Source::DBM - An interface to a DBM copy of the CIA World Factb
 
   use WebService::CIA::Source::DBM;
   my $source = WebService::CIA::Source::DBM->new({
-                                                   Source => 'factbook.dbm',
-                                                   Mode   => 'read'
+                                                   DBM  => 'factbook.dbm',
+                                                   Mode => 'read'
                                                  });
 
 
