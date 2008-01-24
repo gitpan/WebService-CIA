@@ -31,8 +31,7 @@ ok( exists $data->{URL} &&
 
 SKIP: {
 
-    my $build = Module::Build->current();
-    skip "Skipping internet-based tests", 4 if $build->notes('internet') eq 'no';
+    skip 'Skipping internet-based tests - set TEST_INTERNET to run these tests', 4 if ! $ENV{ TEST_INTERNET };
 
     require LWP::UserAgent;
     require Crypt::SSLeay;
@@ -42,7 +41,7 @@ SKIP: {
 
     for ( "URL - Flag", "URL - Map", "URL", "URL - Print" ) {
         my $resp = $ua->get( $data->{ $_ } );
-        is( $resp->code, 200, "URL OK" );
+        is( $resp->code, 200, "$_ OK" );
     }
 
 }

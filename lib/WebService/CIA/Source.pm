@@ -4,7 +4,7 @@ require 5.005_62;
 use strict;
 use warnings;
 
-our $VERSION = '1.3';
+our $VERSION = '1.4';
 
 
 # Preloaded methods go here.

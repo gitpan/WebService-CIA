@@ -19,7 +19,8 @@ my $build = Module::Build->new(
     create_makefile_pl => 'passthrough',
 );
 
-print "Some tests require an internet connection\n";
-$build->notes('internet' => ($build->y_n("Run internet-based tests?", "y")?"yes":"no"));
+#print "Some tests require an internet connection\n";
+#$build->notes('internet' => ($build->y_n("Run internet-based tests?", "y")?"yes":"no"));
+$build->notes('internet' => "no");
 
 $build->create_build_script;

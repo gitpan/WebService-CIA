@@ -10,7 +10,7 @@ use WebService::CIA::Source;
 
 @WebService::CIA::Source::DBM::ISA = ("WebService::CIA::Source");
 
-our $VERSION = '1.3';
+our $VERSION = '1.4';
 
 sub new {
 

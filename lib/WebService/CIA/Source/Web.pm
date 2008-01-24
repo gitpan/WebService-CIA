@@ -3,6 +3,7 @@ package WebService::CIA::Source::Web;
 require 5.005_62;
 use strict;
 use warnings;
+use Carp;
 use LWP::UserAgent;
 use Crypt::SSLeay;
 use WebService::CIA;
@@ -11,7 +12,7 @@ use WebService::CIA::Source;
 
 @WebService::CIA::Source::Web::ISA = ("WebService::CIA::Source");
 
-our $VERSION = '1.3';
+our $VERSION = '1.4';
 
 # Preloaded methods go here.
 
@@ -19,13 +20,18 @@ sub new {
 
     my $proto = shift;
     my $class = ref($proto) || $proto;
+    my $args = shift || {};
+    if ( ! ref $args || ref $args ne "HASH" ) {
+        croak "Arguments to new() must be a hashref";
+    }
     my $self = {};
     $self->{CACHED} = "";
     $self->{CACHE} = {};
     $self->{PARSER} = WebService::CIA::Parser->new;
-    $self->{UA} = LWP::UserAgent->new;
-    $self->{UA}->env_proxy(); # check for proxies
     bless ($self, $class);
+    if ( exists $args->{ user_agent } ) {
+        $self->ua( $args->{ user_agent } );
+    }
     return $self;
 
 }
@@ -69,6 +75,7 @@ sub get {
     my $self = shift;
     my $cc = shift;
     my $response = $self->ua->get($WebService::CIA::base_url . "print/$cc.html");
+    $self->last_response( $response );
     if ($response->is_success) {
         my $data = $self->parser->parse($cc, $response->content);
         $self->cache($data);
@@ -82,7 +89,14 @@ sub get {
 
 sub ua {
 
-    my $self = shift;
+    my ( $self, $ua ) = @_;
+    if ( defined $ua ) {
+        $self->{ UA } = $ua;
+    }
+    if ( ! defined $self->{ UA } ) {
+        $self->{ UA } = LWP::UserAgent->new;
+        $self->{ UA }->env_proxy;
+    }
     return $self->{UA};
 
 }
@@ -114,6 +128,13 @@ sub cache {
 
 }
 
+sub last_response {
+    my ( $self, $response ) = @_;
+    if ( defined $response ) {
+        $self->{ LAST_RESPONSE } = $response;
+    }
+    return $self->{ LAST_RESPONSE };
+}
 
 1;
 
@@ -146,9 +167,22 @@ Apart from C<new>, these methods are normally accessed via a WebService::CIA obj
 
 =over 4
 
-=item C<new()>
+=item C<new( \%opts )>
 
-This method creates a new WebService::CIA::Source::Web object. It takes no arguments.
+    my $source = WebService::CIA::Source::Web->new();
+    $source = WebService::CIA::Source::Web->new( { user_agent => $ua } );
+
+
+This method creates a new WebService::CIA::Source::Web object. It takes an optional hashref of arguments.
+
+=over 4
+
+=item C<user_agent>
+
+A user agent object to use. This must implement the same user interface
+as C<LWP::UserAgent> (or, at least, a C<get()> method).
+
+=back
 
 =item C<value($country_code, $field)>
 
@@ -192,9 +226,15 @@ Get/set a hashref of data for the current country.
 
 Returns a reference to the WebService::CIA::Parser object being used.
 
-=item C<ua()>
+=item C<ua( $userAgent )>
 
-Returns a reference to the LWP::UserAgent being used.
+Returns a reference to the user agent object being used. By default
+this is an C<LWP::UserAgent> object, but you can pass a different object
+in if you wish.
+
+=item C<last_response()>
+
+Returns the C<HTTP::Response> object from the last request.
 
 =back
 

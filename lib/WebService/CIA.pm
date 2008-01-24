@@ -5,7 +5,7 @@ use strict;
 use warnings;
 use Carp;
 
-our $VERSION = '1.3';
+our $VERSION = '1.4';
 
 $WebService::CIA::base_url = "https://www.cia.gov/library/publications/the-world-factbook/";
 

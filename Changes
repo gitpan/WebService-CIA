@@ -29,3 +29,11 @@
     - Minor tweaks from Perl::Critic
     - Added "use warnings" to WebService::CIA::Source::DBM
     - Fixed error in documentation for WebService::CIA::Source::DBM
+
+1.4 2008-01-16
+
+    - Fixed incorrect print URLs
+    - Added last_response() method to WebService::CIA::Source::Web
+    - Added option to submit own user agent for web source
+    - Restructured tests to use TEST_INTERNET env var rather than build option
+

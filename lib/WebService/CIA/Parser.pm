@@ -5,7 +5,7 @@ use strict;
 use warnings;
 use WebService::CIA;
 
-our $VERSION = '1.3';
+our $VERSION = '1.4';
 
 sub new {
 
@@ -27,7 +27,7 @@ sub parse {
         'URL - Flag'  => $WebService::CIA::base_url . 'flags/' . $cc . '-flag.gif',
         'URL - Map'   => $WebService::CIA::base_url . 'maps/'  . $cc . '-map.gif',
         'URL'         => $WebService::CIA::base_url . 'geos/'  . $cc . '.html',
-        'URL - Print' => $WebService::CIA::base_url . 'geos/'  . $cc . '.html'
+        'URL - Print' => $WebService::CIA::base_url . 'print/'  . $cc . '.html'
     };
     while ($html =~ m#
         <td[^>]+ class="FieldLabel">.*?
